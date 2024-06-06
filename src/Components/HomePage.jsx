@@ -16,11 +16,11 @@ const HomePage = () => {
   return (
     <Grid container className='px-4 lg:px-36 justify-between'xs={12}>
 
-        <Grid item xs={0} lg={2} className='hidden lg:block  w-full relative'>
+        <Grid item xs={3} lg={2} className='flex lg:block  w-full relative'>
                 <Navigation/>
 
             </Grid>
-        <Grid item xs={12} lg={8} className={`px-4 lg:px-9 border ${theme.currentTheme==="dark"?"border-gray-800":""} `}>
+        <Grid item xs={8} lg={8} className={`px-4 lg:px-9 border ${theme.currentTheme==="dark"?"border-gray-800":""} `}>
           <Routes>
             <Route path='/' element={<HomeSection/>}></Route>
             <Route path='/admin' element={<Admin/>}></Route>
