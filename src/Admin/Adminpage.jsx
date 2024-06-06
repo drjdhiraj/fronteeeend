@@ -20,7 +20,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      fetch('https://technoblogs.azurewebsites.net/getAllUsers')
+      fetch('http://localhost:5454/getAllUsers')
         .then(response => response.json())
         .then(data => {
           setUsers(data);
