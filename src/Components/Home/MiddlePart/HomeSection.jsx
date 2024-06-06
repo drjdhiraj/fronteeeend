@@ -132,7 +132,6 @@ const HomeSection = () => {
                     />
                   </label>
 
-                  <FmdGoodIcon className="text-[#1d9bf0]" />
                   <div className="relative">
                      <TagFacesIcon onClick={handleOpenEmoji} className="text-[#1d9bf0] cursor-pointer" />
                      {openEmoji && <div className="absolute top-10 z-50 ">
