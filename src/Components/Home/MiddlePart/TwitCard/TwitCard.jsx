@@ -4,6 +4,8 @@ import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import RepeatIcon from "@mui/icons-material/Repeat";
+import FileUploadIcon from "@mui/icons-material/FileUpload";
+import BarChartIcon from "@mui/icons-material/BarChart";
 import { useDispatch, useSelector } from "react-redux";
 import { createRetweet, deleteTweet, likeTweet } from "../../../../Store/Tweet/Action";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -57,7 +59,7 @@ const TwitCard = ({ twit }) => {
         location.pathname === `/profile/${auth.user?.id}` && (
           <div className="flex items-center font-semibold text-gray-700 py-2">
             <RepeatIcon />
-            <p className="ml-3">RePosted</p>
+            <p className="ml-3">You Retweet</p>
           </div>
         )}
       <div className="flex space-x-5 ">
@@ -75,7 +77,7 @@ const TwitCard = ({ twit }) => {
             >
               <span className="font-semibold">{twit.user.fullName}</span>
               <span className=" text-gray-600">
-                @{twit.user.fullName.toLowerCase().split(" ").join("_")} · 2m
+                @{twit.user.fullName.toLowerCase().split(" ").join("_")}  
               </span>
               {twit.user.verified && (
                 <img
@@ -159,7 +161,6 @@ const TwitCard = ({ twit }) => {
                 )}
                 {likes > 0 && <p>{likes}</p>}
               </div>
-
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  createTweetReply } from "../../../../Store/Tweet/Action";
+import { createTweet, createTweetReply } from "../../../../Store/Tweet/Action";
 import { uploadToCloudinary } from "../../../../Utils/UploadToCloudinary";
 import ImageIcon from "@mui/icons-material/Image";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
@@ -33,28 +33,28 @@ const ReplyModal = ({ handleClose, twitData, open }) => {
   const [uploadingImage, setUploadingImage] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
   const dispatch = useDispatch();
-  const { auth } = useSelector((store) => store);
+  const { auth, theme } = useSelector((store) => store);
   // const jwt=localStorage.getItem("jwt")
 
   const handleSubmit = (values, actions) => {
     dispatch(createTweetReply(values));
     actions.resetForm();
     setSelectedImage("");
-    handleClose();
+    handleClose()
   };
 
   const formik = useFormik({
     initialValues: {
       content: "",
       image: "",
-      twitId: twitData.id,
+      twitId:twitData.id
     },
     validationSchema,
     onSubmit: handleSubmit,
   });
   const handleSelectImage = async (event) => {
     setUploadingImage(true);
-    const imgUrl = await uploadToCloudinary(event.target.files[0], "image");
+    const imgUrl = await uploadToCloudinary(event.target.files[0],"image");
     formik.setFieldValue("image", imgUrl);
     setSelectedImage(imgUrl);
     setUploadingImage(false);
@@ -94,16 +94,19 @@ const ReplyModal = ({ handleClose, twitData, open }) => {
               </div>
             </div>
           </div>
-          <section className={`py-10 }`}>
+          <section
+            className={`py-10 }`}
+          >
             <div className="flex space-x-5 ">
               <Avatar alt="Avatar" src={auth.user?.image} />
               <div className="w-full">
                 <form onSubmit={formik.handleSubmit}>
                   <div>
                     <input
+                   
                       type="text"
                       name="content"
-                      placeholder="Whats' Up!?"
+                      placeholder="Ask.."
                       className={`border-none outline-none text-xl bg-transparent `}
                       {...formik.getFieldProps("content")}
                     />
@@ -147,7 +150,7 @@ const ReplyModal = ({ handleClose, twitData, open }) => {
                           color: "white",
                         }}
                       >
-                        Tweet
+                        POST
                       </Button>
                     </div>
                   </div>
@@ -155,7 +158,9 @@ const ReplyModal = ({ handleClose, twitData, open }) => {
               </div>
             </div>
           </section>
-          <section>{<BackdropComponent open={uploadingImage} />}</section>
+          <section>
+            { <BackdropComponent open={uploadingImage}/>}
+          </section>
         </Box>
       </Modal>
     </div>

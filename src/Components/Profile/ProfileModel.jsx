@@ -13,7 +13,7 @@ import { uploadToCloudinary } from "../../Utils/UploadToCloudinary";
 import BackdropComponent from "../Backdrop/Backdrop";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserProfile } from "../../Store/Auth/Action";
-import "./ProfileModel.css"
+import "./ProfileModel.css";
 
 const style = {
   position: "absolute",
@@ -30,15 +30,15 @@ const style = {
   overflow: "scroll-y",
 };
 
-const ProfileModel = ({ handleClose,open }) => {
-    const [uploading,setUploading]=useState(false);
-    const dispatch=useDispatch();
-    const {auth}=useSelector(store=>store);
+const ProfileModel = ({ handleClose, open }) => {
+  const [uploading, setUploading] = useState(false);
+  const dispatch = useDispatch();
+  const { auth } = useSelector((store) => store);
 
   const handleSubmit = (values) => {
-    dispatch(updateUserProfile(values))
+    dispatch(updateUserProfile(values));
     console.log(values);
-    handleClose()
+    handleClose();
   };
   const formik = useFormik({
     initialValues: {
@@ -46,14 +46,13 @@ const ProfileModel = ({ handleClose,open }) => {
       website: "",
       location: "",
       bio: "",
-      backgroundImage:"",
-      image:""
+      backgroundImage: "",
+      image: "",
     },
     onSubmit: handleSubmit,
   });
 
-  useEffect(()=>{
-
+  useEffect(() => {
     formik.setValues({
       fullName: auth.user.fullName || "",
       website: auth.user.website || "",
@@ -62,18 +61,16 @@ const ProfileModel = ({ handleClose,open }) => {
       backgroundImage: auth.user.backgroundImage || "",
       image: auth.user.image || "",
     });
+  }, [auth.user]);
 
-  },[auth.user,formik])
-
-  const handleImageChange=async(event)=>{
-    setUploading(true)
-    const {name}=event.target;
+  const handleImageChange = async (event) => {
+    setUploading(true);
+    const { name } = event.target;
     const file = event.target.files[0];
-    const url=await uploadToCloudinary(file,"image");
-    formik.setFieldValue(name,url);
+    const url = await uploadToCloudinary(file, "image");
+    formik.setFieldValue(name, url);
     setUploading(false);
-
-  }
+  };
 
   return (
     <div>
@@ -121,9 +118,7 @@ const ProfileModel = ({ handleClose,open }) => {
                 <div className="w-full transform -translate-y-20 translate-x-4 h-[6rem]">
                   <div className="relative borde ">
                     <Avatar
-                      src={
-                        formik.values.image 
-                      }
+                      src={formik.values.image}
                       alt="Img"
                       sx={{
                         width: "10rem",
@@ -166,18 +161,6 @@ const ProfileModel = ({ handleClose,open }) => {
                 />
                 <TextField
                   fullWidth
-                  id="website"
-                  name="website"
-                  label="Website"
-                  value={formik.values.website}
-                  onChange={formik.handleChange}
-                  error={
-                    formik.touched.website && Boolean(formik.errors.website)
-                  }
-                  helperText={formik.touched.website && formik.errors.website}
-                />
-                <TextField
-                  fullWidth
                   id="location"
                   name="location"
                   label="Location"
@@ -189,17 +172,12 @@ const ProfileModel = ({ handleClose,open }) => {
                   helperText={formik.touched.location && formik.errors.location}
                 />
               </div>
-               <div className="my-3">
-
+              <div className="my-3"></div>
             </div>
-            </div>
-            <BackdropComponent open={uploading}/>
-          
+            <BackdropComponent open={uploading} />
           </form>
         </Box>
-        
       </Modal>
-      
     </div>
   );
 };

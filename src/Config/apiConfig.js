@@ -1,6 +1,6 @@
 import axios from "axios";
 const jwtToken = localStorage.getItem("jwt")
-export const API_BASE_URL = 'https://technoblogs.azurewebsites.net'
+export const API_BASE_URL = 'https://technoblogs.azurewebsites.net';
 export const api = axios.create({
   baseURL: API_BASE_URL, 
   headers: {

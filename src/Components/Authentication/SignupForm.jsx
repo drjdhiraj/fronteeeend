@@ -18,33 +18,20 @@ const validationSchema = Yup.object().shape({
   password: Yup.string()
     .required("Password is required")
     .min(6, "Password must be at least 6 characters"),
-  dateOfBirth: Yup.object().shape({
-    day: Yup.string().required("Day is required"),
-    month: Yup.string().required("Month is required"),
-    year: Yup.string().required("Year is required"),
-  }),
 });
 
 const days = Array.from({ length: 31 }, (_, i) => i + 1);
 const months = [
   { value: 1, label: "January" },
   { value: 2, label: "February" },
-  { value: 3, label: "March" },
-  { value: 4, label: "April" },
-  { value: 5, label: "May" },
-  { value: 6, label: "June" },
-  { value: 7, label: "July" },
-  { value: 8, label: "August" },
-  { value: 9, label: "September" },
-  { value: 10, label: "October" },
-  { value: 11, label: "November" },
-  { value: 12, label: "December" },
+  // Add other months here
 ];
 const currentYear = new Date().getFullYear();
 const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
 
 const SignupForm = () => {
   const dispatch = useDispatch();
+
 
   const formik = useFormik({
     initialValues: {
@@ -64,7 +51,7 @@ const SignupForm = () => {
       values.dateOfBirth = dateOfBirth;
 
       console.log(values);
-      dispatch(registerUser(values));
+      dispatch(registerUser(values))
     },
   });
 
@@ -73,7 +60,6 @@ const SignupForm = () => {
       ...formik.values.dateOfBirth,
       [name]: event.target.value,
     });
-    formik.setFieldTouched(`dateOfBirth.${name}`, true, true);
   };
 
   return (
@@ -131,7 +117,7 @@ const SignupForm = () => {
             onChange={handleDateChange("day")}
             onBlur={formik.handleBlur}
             error={
-              formik.touched.dateOfBirth?.day && Boolean(formik.errors.dateOfBirth?.day)
+              formik.touched.dateOfBirth && Boolean(formik.errors.dateOfBirth)
             }
             className="w-full"
           >
@@ -150,7 +136,7 @@ const SignupForm = () => {
             onChange={handleDateChange("month")}
             onBlur={formik.handleBlur}
             error={
-              formik.touched.dateOfBirth?.month && Boolean(formik.errors.dateOfBirth?.month)
+              formik.touched.dateOfBirth && Boolean(formik.errors.dateOfBirth)
             }
             className="w-full"
           >
@@ -169,7 +155,7 @@ const SignupForm = () => {
             onChange={handleDateChange("year")}
             onBlur={formik.handleBlur}
             error={
-              formik.touched.dateOfBirth?.year && Boolean(formik.errors.dateOfBirth?.year)
+              formik.touched.dateOfBirth && Boolean(formik.errors.dateOfBirth)
             }
             className="w-full"
           >
@@ -181,13 +167,9 @@ const SignupForm = () => {
           </Select>
         </Grid>
         <Grid item xs={12}>
-          {(formik.touched.dateOfBirth?.day && formik.errors.dateOfBirth?.day) ||
-          (formik.touched.dateOfBirth?.month && formik.errors.dateOfBirth?.month) ||
-          (formik.touched.dateOfBirth?.year && formik.errors.dateOfBirth?.year) ? (
-            <div className="text-red-500">
-              {formik.errors.dateOfBirth?.day || formik.errors.dateOfBirth?.month || formik.errors.dateOfBirth?.year}
-            </div>
-          ) : null}
+          {formik.touched.dateOfBirth && formik.errors.dateOfBirth && (
+            <div className="text-red-500">{formik.errors.dateOfBirth}</div>
+          )}
         </Grid>
         <Grid className="mt-20" item xs={12}>
           <Button

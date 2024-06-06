@@ -52,7 +52,7 @@ const Authentication = () => {
           <div className="py-10">
             <img
               className="w-16"
-              src="https://pbs.twimg.com/media/F1iAD_iaYAAu7I3?format=jpg&name=small"
+              // src="https://pbs.twimg.com/media/F1iAD_iaYAAu7I3?format=jpg&name=small"
               alt=""
             />
           </div>

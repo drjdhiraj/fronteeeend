@@ -44,7 +44,7 @@ navigate(path)
     if(auth.user?.fullName){
       handleClose()
     }
-  },[auth.user,handleClose])
+  },[auth.user])
   
   return (
     <div>

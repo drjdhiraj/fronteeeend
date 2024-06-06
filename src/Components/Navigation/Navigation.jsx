@@ -27,18 +27,25 @@ const Navigation = () => {
   return (
     <div className="h-screen sticky top-0 ">
       <div>
-      <div className="py-5">
-</div>
-
+        <div className="py-5">
+          <img
+            className="w-10"
+            src=""
+            alt=""
+          />
+        </div>
         <div className="space-y-6">
           {navigationMenu.map((item) => (
-            <div onClick={()=> item.title==="Profile"?navigate(`/profile/${auth.user?.id}`): navigate(`/${item.title.toLowerCase()}`)} className="cursor-pointer flex space-x-3 items-center">
+            <div key={item}  onClick={()=> item.title==="Profile"?navigate(`/profile/${auth.user?.id}`): navigate(`/${item.title.toLowerCase()}`)} className="cursor-pointer flex space-x-3 items-center">
               {item.icon}
               <p className="text-xl">{item.title}</p>
             </div>
           ))}
         </div>
         <div className="py-10">
+          
+          <br />
+          
         </div>
       </div>
 

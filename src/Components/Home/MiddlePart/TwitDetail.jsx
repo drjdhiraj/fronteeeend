@@ -16,7 +16,7 @@ const TwitDetail = () => {
 
     useEffect(()=>{
         dispatch(findTwitsById(param.id))
-    },[param.id, dispatch])
+    },[param.id])
 
   return (
     <div>
