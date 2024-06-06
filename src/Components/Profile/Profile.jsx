@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { Avatar, Backdrop, Box, Button, CircularProgress } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { BusinessCenterSharp } from "@mui/icons-material";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
@@ -11,7 +13,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import {
   findTwitsByLikesContainUser,
   getUsersTweets,
-  
+  likeTweet,
 } from "../../Store/Tweet/Action";
 import TwitCard from "../Home/MiddlePart/TwitCard/TwitCard";
 import ProfileModel from "./ProfileModel";
@@ -41,11 +43,11 @@ const Profile = () => {
   useEffect(() => {
     dispatch(getUsersTweets(param.id));
     dispatch(findTwitsByLikesContainUser(param.id));
-  }, [param.id, twit.retwit, dispatch]);
+  }, [param.id, twit.retwit]);
 
   useEffect(() => {
     dispatch(findUserById(param.id));
-  }, [param.id, auth.user, dispatch]);
+  }, [param.id, auth.user]);
 
   useEffect(() => {
     setOpenSnackBar(auth.updateUser);
@@ -138,6 +140,10 @@ const Profile = () => {
                 <LocationOnIcon />
                 <p className="ml-2">{auth.findUser?.location}</p>
               </div>
+              <div className="flex items-center text-gray-500">
+                <CalendarMonthIcon />
+                <p className="ml-2">Joined June 2024</p>
+              </div>
             </div>
             <div className="flex items-center space-x-5">
               <div className="flex items-center space-x-1 font-semibold">
@@ -160,7 +166,7 @@ const Profile = () => {
                 onChange={handleTabChange}
                 aria-label="lab API tabs example"
               >
-                <Tab label="Tweets" value="1" />
+                <Tab label="Posts" value="1" />
                 <Tab label="Likes" value="4" />
               </TabList>
             </Box>
