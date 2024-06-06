@@ -22,7 +22,7 @@ const RightPart = () => {
         const response = await axios.get('https://newsapi.org/v2/top-headlines', {
           params: {
             country: 'in',
-            apiKey: '279d9fdeb65e40fbbb0a871e6ccaa986', // Replace with your NewsAPI key
+            apiKey: '279d9fdeb65e40fbbb0a871e6ccaa986',
           },
         });
         setNews(response.data.articles.slice(0,3));
