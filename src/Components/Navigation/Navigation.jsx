@@ -25,7 +25,7 @@ const Navigation = () => {
     handleClose()
   }
   return (
-    <div className="h-screen sticky top-0 ">
+    <div className="h-50 md:h-10 lg:h-full sticky top-0 ">
       <div>
         <div className="py-5">
           <img
