@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material'
+import { Grid, Box } from '@mui/material'
 import React from 'react'
 import Navigation from './Navigation/Navigation'
 import HomeSection from './Home/MiddlePart/HomeSection'
@@ -14,6 +14,11 @@ const HomePage = () => {
 
   return (
     <Grid container spacing={2} className='px-2 md:px-4 lg:px-36'>
+      {/* Right Sidebar on top for small screens */}
+      <Grid item xs={12} sx={{ display: { lg: 'none' } }}>
+        <RightPart />
+      </Grid>
+
       {/* Navigation */}
       <Grid item xs={12} sm={3} lg={2}>
         <Navigation />
@@ -27,7 +32,6 @@ const HomePage = () => {
               <Route path='/' element={<HomeSection />} />
               <Route path='/admin' element={<Admin />} />
               <Route path='/home' element={<HomeSection />} />
-              {/* <Route path='/profile' element={<Profile/>}></Route> */}
               <Route path='/profile/:id' element={<Profile />} />
               <Route path='/twit/:id' element={<TwitDetail />} />
             </Routes>
@@ -35,9 +39,11 @@ const HomePage = () => {
         </Grid>
       </Grid>
 
-      {/* Right Sidebar */}
-      <Grid item xs={12} lg={3} className='hidden lg:block'>
-        <RightPart />
+      {/* Right Sidebar for large screens */}
+      <Grid item lg={3} sx={{ display: { xs: 'none', lg: 'block' }, position: { lg: 'fixed' }, right: 0, top: 0, height: '100vh', overflow: 'auto' }}>
+        <Box p={2}>
+          <RightPart />
+        </Box>
       </Grid>
     </Grid>
   )
