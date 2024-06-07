@@ -59,7 +59,7 @@ const AdminPage = () => {
   };
 
   const handleDeleteUser = () => {
-    fetch(`localhost:5454/${userIdToDelete}`, {
+    fetch(`https://technoblogsapp.azurewebsites.net/getAllUsers/${userIdToDelete}`, {
       method: "DELETE",
     })
       .then((response) => {
