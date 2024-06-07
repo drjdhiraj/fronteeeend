@@ -27,7 +27,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      fetch("http://localhost:5454/getAllUsers")
+      fetch("https://technoblogsapp.azurewebsites.net/getAllUsers")
         .then((response) => response.json())
         .then((data) => {
           setUsers(data);
@@ -131,6 +131,26 @@ const AdminPage = () => {
         </Grid>
         <Grid item xs={12}>
 
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <Typography variant="h5" component="div">
+                Delete User
+              </Typography>
+              <TextField
+                label="User ID"
+                variant="outlined"
+                value={userIdToDelete}
+                onChange={(e) => setUserIdToDelete(e.target.value)}
+                style={{ marginBottom: '1rem' }}
+              />
+              <Button variant="contained" color="error" onClick={handleDeleteUser}>
+                Delete User
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+
             <Card className="max-h-400 min-w-[400px] block overflow-y-auto  transition-transform my-3 shadow-2xl duration-300   ">
                 <CardContent>
                   <Typography variant="h5" component="div">
@@ -180,6 +200,7 @@ const AdminPage = () => {
                     </ul>
                   </CardContent>
                 </Card>
+                
 
 
           </Grid>
