@@ -9,32 +9,36 @@ import Profile from './Profile/Profile'
 import TwitDetail from './Home/MiddlePart/TwitDetail'
 import Admin from '../Admin/Admin'
 
-
-
 const HomePage = () => {
-  const {theme}=useSelector(store=>store);
+  const { theme } = useSelector(store => store);
+
   return (
-    <Grid container className='px-4 lg:px-36 justify-between'xs={12}>
+    <Grid container spacing={2} className='px-2 md:px-4 lg:px-36'>
+      {/* Navigation */}
+      <Grid item xs={12} sm={3} lg={2}>
+        <Navigation />
+      </Grid>
 
-        <Grid item xs={3} lg={2} className='flex lg:block  w-full relative'>
-                <Navigation/>
-
-            </Grid>
-        <Grid item xs={8} lg={8} className={`px-4 lg:px-9 border ${theme.currentTheme==="dark"?"border-gray-800":""} `}>
-          <Routes>
-            <Route path='/' element={<HomeSection/>}></Route>
-            <Route path='/admin' element={<Admin/>}></Route>
-            <Route path='/home' element={<HomeSection/>}></Route>
-            {/* <Route path='/profile' element={<Profile/>}></Route> */}
-            <Route path='/profile/:id' element={<Profile/>}></Route>
-            <Route path='/twit/:id' element={<TwitDetail/>}></Route>
-          </Routes>
-            
+      {/* Main Content */}
+      <Grid item xs={12} sm={9} lg={7}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Routes>
+              <Route path='/' element={<HomeSection />} />
+              <Route path='/admin' element={<Admin />} />
+              <Route path='/home' element={<HomeSection />} />
+              {/* <Route path='/profile' element={<Profile/>}></Route> */}
+              <Route path='/profile/:id' element={<Profile />} />
+              <Route path='/twit/:id' element={<TwitDetail />} />
+            </Routes>
+          </Grid>
         </Grid>
-        <Grid item  xs={0} lg={2} className='hidden lg:block  w-full relative pl-2 '>
-            <RightPart/>
-        </Grid>
+      </Grid>
 
+      {/* Right Sidebar */}
+      <Grid item xs={12} lg={3} className='hidden lg:block'>
+        <RightPart />
+      </Grid>
     </Grid>
   )
 }
