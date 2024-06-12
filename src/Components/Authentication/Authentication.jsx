@@ -40,7 +40,7 @@ const Authentication = () => {
       <Grid className="overflow-y-hidden" container>
         <Grid className="hidden lg:block" item lg={7}>
           <img
-            className="w-full h-screen"
+            className="w-full h-screen duration-300  hover:-hue-rotate-30 "
             src="https://cdn.pixabay.com/photo/2015/06/23/23/14/laptop-819285_1280.jpg"
             alt=""
           />
@@ -51,15 +51,15 @@ const Authentication = () => {
         <Grid className="px-10" item lg={5} xs={12}>
           <div className="py-10">
             <img
-              className="w-16"
+              className="w-16 duration-300 hover:text-lime-500"
               // src="https://pbs.twimg.com/media/F1iAD_iaYAAu7I3?format=jpg&name=small"
               alt=""
             />
           </div>
 
-          <h1 className="font-bold text-7xl">Techno Blogs</h1>
+          <h1 className="font-bold duration-300 hover:text-red-600 hover:rotate-3  text-7xl">Techno Blogs</h1>
 
-          <h1 className="font-bold text-3xl py-16">Join TechnoBlog Today</h1>
+          <h1 className="font-bold duration-300 hover:text-red-700 text-3xl py-16">Join TechnoBlog Today</h1>
 
           <div className="w-[60%]">
             <div className="w-full">
@@ -79,28 +79,17 @@ const Authentication = () => {
                   console.log("Login Failed");
                 }}
               />
-              <p className="py-5 text-center">OR</p>
-              <Button
-                onClick={() => handleAuthModelOpen("/signup")}
-                sx={{
-                  width: "100%",
-                  borderRadius: "29px",
-                  py: "7px",
-                  bgcolor: "#1d9bf0",
-                }}
-                variant="contained"
-                size="large"
-              >
-                Create Account
-              </Button>
-              <p className="text-sm mt-2">
-                By signing up, you agree to the Terms of Service and Privacy
-                Policy, including Cookie Use.
-              </p>
-            </div>
-            <div className="mt-10">
-              <h1 className="font-bold text-xl mb-5">Already Have Account?</h1>
-              <Button
+<div>
+  <p className="text-sm mt-2 duration-300 hover:text-cyan-700-700 ">
+    By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use.
+  </p>
+  <p className="pt-10 duration-300 hover:text-blue-700 ">Enjoy an effortless Signin-Signup experience.</p>
+  <p className=" duration-300 hover:text-blue-700">No need to remember another username or password. Use your Google account for quick and easy access.</p>
+</div>
+<div className="duration-300 hover:text-blue-700 mt-10">
+</div>
+
+              {/* <Button
                 onClick={() => handleAuthModelOpen("/signin")}
                 sx={{
                   width: "100%",
@@ -111,7 +100,7 @@ const Authentication = () => {
                 size="large"
               >
                 Signin
-              </Button>
+              </Button> */}
             </div>
           </div>
         </Grid>

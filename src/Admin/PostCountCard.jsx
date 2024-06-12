@@ -7,6 +7,7 @@ const PostCountCard = () => {
 
   useEffect(() => {
     axios.get('https://technoblogsapp.azurewebsites.net/postcount')
+    // axios.get('http://localhost:5454/postcount')
       .then(response => {
         setPostCount(response.data);
       })
@@ -14,7 +15,7 @@ const PostCountCard = () => {
   }, []);
 
   return (
-    <Card>
+    <Card  >
       <CardContent>
         <Typography variant="h5" component="div">
           Post Count
