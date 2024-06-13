@@ -13,8 +13,8 @@ const Admin = () => {
 
     try {
       // Make a GET request to fetch admin details by username
-      // const response = await axios.get(`https://technoblogsapp.azurewebsites.net/admin?username=${username}`);
-      const response = await axios.get(`http://localhost:5454/admin?username=${username}`);
+      const response = await axios.get(`https://technoblogsapp.azurewebsites.net/admin?username=${username}`);
+      // const response = await axios.get(`http://localhost:5454/admin?username=${username}`);
 
       // Check if the response contains admin details
       if (response.data) {
